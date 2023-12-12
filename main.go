@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 
-	"github.com/mengelbart/rtp-over-quic/cmd"
+	"github.com/Willi-42/rtp-over-quic/cmd"
 )
 
 func main() {

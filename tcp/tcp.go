@@ -5,7 +5,7 @@ import (
 	"net"
 	"syscall"
 
-	"github.com/mengelbart/rtp-over-quic/cc"
+	"github.com/Willi-42/rtp-over-quic/cc"
 )
 
 func connectTCP(addr string, cc cc.Algorithm) (*net.TCPConn, error) {

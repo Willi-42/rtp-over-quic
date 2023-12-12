@@ -7,12 +7,12 @@ import (
 	"math/rand"
 	"time"
 
-	"github.com/mengelbart/rtp-over-quic/cc"
-	"github.com/mengelbart/rtp-over-quic/media"
-	"github.com/mengelbart/rtp-over-quic/quic"
-	"github.com/mengelbart/rtp-over-quic/rtp"
-	"github.com/mengelbart/rtp-over-quic/tcp"
-	"github.com/mengelbart/rtp-over-quic/udp"
+	"github.com/Willi-42/rtp-over-quic/cc"
+	"github.com/Willi-42/rtp-over-quic/media"
+	"github.com/Willi-42/rtp-over-quic/quic"
+	"github.com/Willi-42/rtp-over-quic/rtp"
+	"github.com/Willi-42/rtp-over-quic/tcp"
+	"github.com/Willi-42/rtp-over-quic/udp"
 	"github.com/pion/interceptor"
 	"github.com/spf13/cobra"
 )

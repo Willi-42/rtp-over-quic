@@ -6,8 +6,8 @@ import (
 	"log"
 	"time"
 
-	"github.com/mengelbart/rtp-over-quic/logging"
-	"github.com/mengelbart/rtp-over-quic/scream"
+	"github.com/Willi-42/rtp-over-quic/logging"
+	"github.com/Willi-42/rtp-over-quic/scream"
 	"github.com/pion/interceptor/pkg/cc"
 )
 

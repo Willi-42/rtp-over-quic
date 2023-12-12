@@ -8,7 +8,7 @@ import (
 	"time"
 
 	"github.com/mengelbart/gst-go/gstreamer"
-	"github.com/mengelbart/rtp-over-quic/rtp"
+	"github.com/Willi-42/rtp-over-quic/rtp"
 	"github.com/pion/interceptor"
 	pionrtp "github.com/pion/rtp"
 	"github.com/pion/webrtc/v3/pkg/media/h264reader"

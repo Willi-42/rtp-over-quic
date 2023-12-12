@@ -4,7 +4,7 @@ import (
 	"context"
 	"time"
 
-	"github.com/mengelbart/rtp-over-quic/rtp"
+	"github.com/Willi-42/rtp-over-quic/rtp"
 	screamcgo "github.com/mengelbart/scream-go"
 )
 

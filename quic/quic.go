@@ -4,8 +4,8 @@ import (
 	"time"
 
 	"github.com/lucas-clemente/quic-go"
-	"github.com/mengelbart/rtp-over-quic/cc"
-	"github.com/mengelbart/rtp-over-quic/logging"
+	"github.com/Willi-42/rtp-over-quic/cc"
+	"github.com/Willi-42/rtp-over-quic/logging"
 )
 
 type TransportMode int

@@ -8,8 +8,8 @@ import (
 	"log"
 	"net"
 
-	"github.com/mengelbart/rtp-over-quic/cc"
-	"github.com/mengelbart/rtp-over-quic/rtp"
+	"github.com/Willi-42/rtp-over-quic/cc"
+	"github.com/Willi-42/rtp-over-quic/rtp"
 	"github.com/pion/interceptor"
 	pionrtp "github.com/pion/rtp"
 )

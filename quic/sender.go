@@ -14,9 +14,9 @@ import (
 	"github.com/lucas-clemente/quic-go"
 	quiclogging "github.com/lucas-clemente/quic-go/logging"
 	"github.com/lucas-clemente/quic-go/quicvarint"
-	"github.com/mengelbart/rtp-over-quic/cc"
-	"github.com/mengelbart/rtp-over-quic/logging"
-	"github.com/mengelbart/rtp-over-quic/rtp"
+	"github.com/Willi-42/rtp-over-quic/cc"
+	"github.com/Willi-42/rtp-over-quic/logging"
+	"github.com/Willi-42/rtp-over-quic/rtp"
 	"github.com/pion/interceptor"
 	pionrtp "github.com/pion/rtp"
 )

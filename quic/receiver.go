@@ -11,7 +11,7 @@ import (
 
 	"github.com/lucas-clemente/quic-go"
 	"github.com/lucas-clemente/quic-go/quicvarint"
-	"github.com/mengelbart/rtp-over-quic/cc"
+	"github.com/Willi-42/rtp-over-quic/cc"
 	"github.com/pion/interceptor"
 	"github.com/pion/rtcp"
 )

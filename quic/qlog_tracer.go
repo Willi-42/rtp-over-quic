@@ -137,7 +137,13 @@ func (c *ConnectionRTTTracer) UpdatedMetrics(rttStats *logging.RTTStats, cwnd, b
 	}
 }
 
-func (c ConnectionRTTTracer) AcknowledgedPacket(logging.EncryptionLevel, logging.PacketNumber) {
+func (c ConnectionRTTTracer) AcknowledgedPacket(level logging.EncryptionLevel, number logging.PacketNumber) {
+	// fmt.Println("ack: ", number)
+}
+
+func (c ConnectionRTTTracer) NewOneWayDelay(owd uint64) {
+	println("owd: ", owd)
+	// this event comes after the AcknowledgedPacket event
 }
 
 func (c ConnectionRTTTracer) LostPacket(level logging.EncryptionLevel, number logging.PacketNumber, reason logging.PacketLossReason) {
