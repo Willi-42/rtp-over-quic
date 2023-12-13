@@ -11,12 +11,12 @@ import (
 	"net"
 	"time"
 
-	"github.com/lucas-clemente/quic-go"
-	quiclogging "github.com/lucas-clemente/quic-go/logging"
-	"github.com/lucas-clemente/quic-go/quicvarint"
 	"github.com/Willi-42/rtp-over-quic/cc"
 	"github.com/Willi-42/rtp-over-quic/logging"
 	"github.com/Willi-42/rtp-over-quic/rtp"
+	"github.com/lucas-clemente/quic-go"
+	quiclogging "github.com/lucas-clemente/quic-go/logging"
+	"github.com/lucas-clemente/quic-go/quicvarint"
 	"github.com/pion/interceptor"
 	pionrtp "github.com/pion/rtp"
 )
@@ -213,7 +213,7 @@ func (s *Sender) readFromNetwork(ctx context.Context, rtcpChan chan rtp.RTCPFeed
 	}
 }
 
-func (s *Sender) writeDgram(buf []byte, cb func(bool)) (int, error) {
+func (s *Sender) writeDgram(buf []byte, cb func(bool, uint64)) (int, error) {
 	return len(buf), s.conn.SendMessage(buf, cb)
 }
 
@@ -283,15 +283,16 @@ func (s *Sender) NewMediaStream() (interceptor.RTPWriter, error) {
 	return s.NewMediaStreamWithFlowID(id), nil
 }
 
-func (s *Sender) ackCallback(sent time.Time, ssrc uint32, size int, seqNr uint16) func(bool) {
+func (s *Sender) ackCallback(sent time.Time, ssrc uint32, size int, seqNr uint16) func(bool, uint64) {
 	if s.localRFC8888 {
-		return func(b bool) {
+		return func(b bool, owd uint64) {
 			if b {
 				s.localFeedback.ack(ackedPkt{
 					sentTS: sent,
 					ssrc:   ssrc,
 					size:   size,
 					seqNr:  seqNr,
+					owd:    owd,
 				})
 			}
 		}

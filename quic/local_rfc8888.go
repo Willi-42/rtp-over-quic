@@ -24,6 +24,7 @@ type ackedPkt struct {
 	ssrc   uint32
 	size   int
 	seqNr  uint16
+	owd    uint64
 }
 
 func getNTPT0() float64 {
@@ -74,6 +75,8 @@ func (f *localRFC8888Generator) run(ctx context.Context) {
 		case pkt := <-f.ackedPkts:
 			t := time.Now()
 			metrics := f.m.Metrics()
+
+			// TODO: change estimate to owd
 
 			var lastTS uint64
 			sent := f.ntpTime(pkt.sentTS)
