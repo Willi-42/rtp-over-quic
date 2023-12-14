@@ -74,14 +74,11 @@ func (f *localRFC8888Generator) run(ctx context.Context) {
 		select {
 		case pkt := <-f.ackedPkts:
 			t := time.Now()
-			metrics := f.m.Metrics()
-
-			// TODO: change estimate to owd
 
 			var lastTS uint64
 			sent := f.ntpTime(pkt.sentTS)
-			rttNTP := metrics.LatestRTT.Seconds() * 65536
-			lastTS = sent + uint64(rttNTP)/2
+			owdNTP := float64(pkt.owd) / 1000000 * 65536
+			lastTS = sent + uint64(owdNTP)
 			f.rx.Receive(lastTS, pkt.ssrc, pkt.size, pkt.seqNr, 0)
 
 			if ok, fb := f.rx.CreateStandardizedFeedback(lastTS, true); ok {
