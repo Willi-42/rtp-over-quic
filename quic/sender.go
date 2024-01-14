@@ -285,14 +285,14 @@ func (s *Sender) NewMediaStream() (interceptor.RTPWriter, error) {
 
 func (s *Sender) ackCallback(sent time.Time, ssrc uint32, size int, seqNr uint16) func(bool, uint64) {
 	if s.localRFC8888 {
-		return func(b bool, owd uint64) {
+		return func(b bool, recvTS uint64) {
 			if b {
 				s.localFeedback.ack(ackedPkt{
 					sentTS: sent,
 					ssrc:   ssrc,
 					size:   size,
 					seqNr:  seqNr,
-					owd:    owd,
+					recvTS: recvTS,
 				})
 			}
 		}

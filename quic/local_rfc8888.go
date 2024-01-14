@@ -24,7 +24,7 @@ type ackedPkt struct {
 	ssrc   uint32
 	size   int
 	seqNr  uint16
-	owd    uint64
+	recvTS uint64
 }
 
 func getNTPT0() float64 {
@@ -75,10 +75,9 @@ func (f *localRFC8888Generator) run(ctx context.Context) {
 		case pkt := <-f.ackedPkts:
 			t := time.Now()
 
-			var lastTS uint64
-			sent := f.ntpTime(pkt.sentTS)
-			owdNTP := float64(pkt.owd) / 1000000 * 65536
-			lastTS = sent + uint64(owdNTP)
+			recvNTP := float64(pkt.recvTS) / 1000000 * 65536
+			lastTS := uint64(recvNTP)
+
 			f.rx.Receive(lastTS, pkt.ssrc, pkt.size, pkt.seqNr, 0)
 
 			if ok, fb := f.rx.CreateStandardizedFeedback(lastTS, true); ok {
