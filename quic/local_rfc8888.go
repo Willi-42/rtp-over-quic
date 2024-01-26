@@ -76,9 +76,8 @@ func (f *localRFC8888Generator) run(ctx context.Context) {
 			t := time.Now()
 
 			var lastTS uint64
-			sent := f.ntpTime(pkt.sentTS)
-			owdNTP := float64(pkt.owd) / 1000000 * 65536
-			lastTS = sent + uint64(owdNTP)
+			recivedTS := pkt.sentTS.Add(time.Duration(pkt.owd) * time.Microsecond)
+			lastTS = f.ntpTime(recivedTS)
 			f.rx.Receive(lastTS, pkt.ssrc, pkt.size, pkt.seqNr, 0)
 
 			if ok, fb := f.rx.CreateStandardizedFeedback(lastTS, true); ok {
