@@ -75,9 +75,6 @@ func (f *localRFC8888Generator) run(ctx context.Context) {
 		case pkt := <-f.ackedPkts:
 			t := time.Now()
 
-			// recvNTP := float64(pkt.recvTS) / 1000000 * 65536
-			// lastTS := uint64(recvNTP)
-
 			recvTime := time.UnixMicro(int64(pkt.recvTS))
 			lastTS := f.ntpTime(recvTime)
 
